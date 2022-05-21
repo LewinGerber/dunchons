@@ -32,22 +32,37 @@ public class PlayerController : MonoBehaviour
             bool canMoveInXDirection = false;
             bool canMoveInYDirection = false;
 
-            if (!canMoveInBothDirections && moveInput.x > 0) {
+            if (!canMoveInBothDirections && moveInput.x > 0)
+            {
                 canMoveInXDirection = TryMove(new Vector2(moveInput.x, 0));
             }
 
-            if (!canMoveInXDirection && moveInput.y > 0) {
+            if (!canMoveInXDirection && moveInput.y > 0)
+            {
                 canMoveInYDirection = TryMove(new Vector2(0, moveInput.y));
             }
 
             animator.SetBool("isMoving", canMoveInBothDirections || canMoveInXDirection || canMoveInYDirection);
-        } else {
+        }
+        else
+        {
             animator.SetBool("isMoving", false);
         }
 
-        if (moveInput.x > 0) {
+        if (moveInput.y > 0)
+        {
+            animator.SetBool("isTurnedAround", true);
+        } else {
+            animator.SetBool("isTurnedAround", false);
+        }
+
+        if (moveInput.x > 0)
+        {
             spriteRenderer.flipX = false;
-        } else if (moveInput.x < 0) {
+            
+        }
+        else if (moveInput.x < 0)
+        {
             spriteRenderer.flipX = true;
         }
     }
@@ -61,12 +76,12 @@ public class PlayerController : MonoBehaviour
                 moveSpeed * Time.fixedDeltaTime + collisionOffset
             );
 
-            if (numberOfCollisions == 0)
-            {
-                rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-                return true;
-            }
-            return false;
+        if (numberOfCollisions == 0)
+        {
+            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
+            return true;
+        }
+        return false;
     }
 
     void OnMove(InputValue input)
