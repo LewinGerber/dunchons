@@ -33,6 +33,12 @@ ExportedObj/
 *.sln
 *.suo
 *.tmp
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
 *.user
 *.userprefs
 *.pidb
@@ -58,3 +64,17 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Visual studio code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Jetbrains idea
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/dictionaries
+.idea/**/shelf
