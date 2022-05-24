@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Movement : MonoBehaviour
 {
     public float moveSpeed = 1f;
-    public float collisionOffset = 0.02f;
+    //public float collisionOffset = 0.02f;
     public ContactFilter2D movementFilter;
 
     Vector2 userInput;
@@ -22,7 +22,7 @@ public class Movement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animationController = new AnimationController(animator, spriteRenderer);
+        animationController = new AnimationController(animator, this.gameObject.transform);
     }
 
     void OnMove(InputValue input)
@@ -71,7 +71,7 @@ public class Movement : MonoBehaviour
                 direction,
                 movementFilter,
                 castCollisions,
-                moveSpeed * Time.fixedDeltaTime + collisionOffset
+                moveSpeed * Time.fixedDeltaTime
             ) > 0;
     }
 

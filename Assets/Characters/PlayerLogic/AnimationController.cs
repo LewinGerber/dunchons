@@ -4,12 +4,12 @@ public class AnimationController
     private const string IS_MOVING_PARAMETER = "isMoving";
 
     private Animator animator;
-    private SpriteRenderer spriteRenderer;
+    private Transform transform;
 
-    public AnimationController(Animator animator, SpriteRenderer spriteRenderer)
+    public AnimationController(Animator animator, Transform transform)
     {
         this.animator = animator;
-        this.spriteRenderer = spriteRenderer;
+        this.transform = transform;
     }
 
     public void SetMoving(bool isMoving)
@@ -19,7 +19,14 @@ public class AnimationController
 
     public void FlipSpriteWithDirection(Vector2 direction)
     {
-        spriteRenderer.flipX = direction.x < 0;
+        if (direction.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (direction.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
 }
