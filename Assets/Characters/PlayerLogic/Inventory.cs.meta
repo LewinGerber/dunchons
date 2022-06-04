@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: a960ac4f4ca3deb4cba22bd5b4e97a3a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - itemSlot: {fileID: 843253870360238342, guid: 4d3f3accf1f3afe4b96a1e6e27bd075a, type: 3}
+  - hotbar: {fileID: 4293186232266389799, guid: 7fcf0173501a7404ebda53b2148dc3e4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
