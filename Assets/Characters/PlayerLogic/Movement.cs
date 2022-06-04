@@ -30,6 +30,11 @@ public class Movement : MonoBehaviour
         userInput = input.Get<Vector2>();
     }
 
+    void OnRightClick()
+    {
+        Debug.Log("Left click");
+    }
+
     // Update is called once per frame
     private void FixedUpdate()
     {
