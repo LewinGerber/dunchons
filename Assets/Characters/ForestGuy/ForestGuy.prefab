@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6794017789603675952}
   - component: {fileID: 5135821060431350727}
   - component: {fileID: 869973618154664390}
+  - component: {fileID: 4715484479654221219}
   m_Layer: 0
   m_Name: ForestGuy
   m_TagString: Player
@@ -229,6 +230,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indexOfSlectedItem: 0
   itemSlot: {fileID: 0}
+--- !u!114 &4715484479654221219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 287393850304287620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e227156ffce8aa84c880203b9e218836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1973787637190027188
 PrefabInstance:
   m_ObjectHideFlags: 0
