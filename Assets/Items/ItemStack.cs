@@ -5,11 +5,11 @@ public class ItemStack
     [SerializeField][Min(1)]
     private int numberOfItems = 1;
     [SerializeField]
-    private Item item;
+    private IInteractable interactable;
 
-    public ItemStack(Item item)
+    public ItemStack(IInteractable interactable)
     {
-        this.item = item;
+        this.interactable = interactable;
     }
 
     public void IncreaseNumberOfItems()
@@ -17,9 +17,9 @@ public class ItemStack
         numberOfItems++;
     }
 
-    public Item GetItem()
+    public IInteractable GetInteractable()
     {
-        return item;
+        return interactable;
     }
 
     public int GetNumberOfItems()
