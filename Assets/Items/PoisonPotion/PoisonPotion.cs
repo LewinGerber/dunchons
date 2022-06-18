@@ -10,9 +10,11 @@ public class PoisonPotion : MonoBehaviour, IInteractable
     [SerializeField]
     private GameObject owner;
 
-    public void Use() {
+    public void PrimaryUse() {
         owner.transform.Rotate(0, 0, -90);
     }
+
+    public void SecondaryUse() { }
 
     public Item GetItem() {
         return item;

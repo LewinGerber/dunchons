@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    void OnFire()
+    void OnPrimaryAction()
     {
-        Inventory.Instance.UseSelectedItem();
+        Inventory.Instance.OnPrimaryInteraction();
+    }
+
+    void OnSecondaryAction()
+    {
+        Inventory.Instance.OnSecondaryInteraction();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -14,9 +19,11 @@ public class Interaction : MonoBehaviour
         GameObject collisionObject = collision.gameObject;
         if (collisionObject.CompareTag("Item"))
         {
-            if (Inventory.Instance.HasSpaceInInventory()) {
-                Inventory.Instance.AddInteractable(collisionObject.GetComponent<IInteractable>());
-                Destroy(collisionObject);
+            IInteractable interactable = collisionObject.GetComponent<IInteractable>();
+            if (Inventory.Instance.HasSpaceInInventoryForItem(interactable)) {
+                Inventory.Instance.AddInteractable(interactable);
+                collisionObject.transform.position = new Vector3(0, -100, 0);
+                // Destroy(collisionObject);
             } else {
                 Debug.Log("Inventory is full");
             }

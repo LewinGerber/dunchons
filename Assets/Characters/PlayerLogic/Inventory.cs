@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
@@ -70,12 +71,23 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UseSelectedItem()
-    {
+    public void OnPrimaryInteraction() {
         if (indexOfSlectedItem < itemStacks.Count)
         {
             IInteractable interactable = itemStacks[indexOfSlectedItem].GetInteractable();
-            interactable.Use();
+            interactable.PrimaryUse();
+        }
+        else
+        {
+            Debug.Log("Using no item");
+        }
+    }
+
+    public void OnSecondaryInteraction() {
+        if (indexOfSlectedItem < itemStacks.Count)
+        {
+            IInteractable interactable = itemStacks[indexOfSlectedItem].GetInteractable();
+            interactable.SecondaryUse();
         }
         else
         {
@@ -85,7 +97,7 @@ public class Inventory : MonoBehaviour
 
     public void AddInteractable(IInteractable interactable)
     {
-        if (HasSpaceInInventory())
+        if (HasSpaceInInventoryForItem(interactable))
         {
             bool isAlreadyInInventory = itemStacks.Exists(stack => stack.GetInteractable().GetItem().GetId().Equals(interactable.GetItem().GetId()));
             if (isAlreadyInInventory)
@@ -110,9 +122,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public bool HasSpaceInInventory()
+    public bool HasSpaceInInventoryForItem(IInteractable interactable)
     {
-        return itemStacks.Count < MAX_ITEMS;
+        bool hasSpaceForNewItem = new HashSet<ItemStack>(itemStacks).Count < MAX_ITEMS;
+        
+        List<string> itemIDs = itemStacks.Select(stack => stack.GetInteractable().GetItem().GetId()).ToList();
+        bool isAlreadyIncluded = itemIDs.Contains(interactable.GetItem().GetId());
+
+        return hasSpaceForNewItem || isAlreadyIncluded;
     }
 
     void OnInventorySlot1()

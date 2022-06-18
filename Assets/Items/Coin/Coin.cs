@@ -21,11 +21,13 @@ public class Coin : MonoBehaviour, IInteractable
         audioSource = GetComponent<AudioSource>();
     }
 
-    public void Use()
+    public void PrimaryUse()
     {
         audioSource.clip = coinSound;
         audioSource.Play();
     }
+
+    public void SecondaryUse() { }
 
     public Item GetItem()
     {

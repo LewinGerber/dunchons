@@ -4,8 +4,10 @@ using UnityEngine;
 
 public interface IInteractable
 {
-    public void Use();
+    public void PrimaryUse();
 
+    public void SecondaryUse();
+    
     public Item GetItem();
     
     public GameObject GetOwner();
